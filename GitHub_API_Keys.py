@@ -1,14 +1,6 @@
 import requests;
 import json;
 
-
-
-#print(data);
-#print(data[0])
-#for entry in data:
-#    print (entry.key);
-
-
 def getGithubRepos(user = "redroach51"):
     repos = requests.get("https://api.github.com/users/" + user + "/repos");
     repos.raise_for_status();
@@ -21,23 +13,22 @@ def getGithubRepos(user = "redroach51"):
                 repos.append(value)
     return repos;
 
-def getGithubCommits(repos, user):
-    print(user + "'s number of repositories: " + str(len(repos)));
-    x = 0;
-    count = 0;
-    for entry in repos:
-        x = x + 1
-        commits = requests.get("https://api.github.com/repos/RedRoach51/" + entry + "/commits")
-        commits = commits.json();
-        count = count + len(commits);
-        print (str(x) + ".) " + entry + ", Commits: " + str(len(commits)));
-    print("Total commits: " + str(count))
+def getGithubCommits(repo = "SSW-567-HW04", user = "redroach51"):
+    commits = requests.get("https://api.github.com/repos/"+ user + "/" + repo + "/commits")
+    commits = commits.json();
+    return len(commits);
 
 user_input = input("Input GitHub user: ")
 if (user_input == ""):
     print("Default user set to creator RedRoach51.")
     user_input = "RedRoach51";
 repositories = getGithub(user_input)
-getGithubCommits(repositories, user_input);
 
+i = 1;
+count = 0;
 
+print(user_input + "'s number of repositories: " + str(len(repositories)));
+for repo_name in repositories:
+    commits = getGithubCommits(repo_name, user_input);
+    count = count + commits;
+    print(str(i) + ".) " + repo_name + ", Commits: " + str(commits));
