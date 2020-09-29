@@ -18,19 +18,21 @@ def getGithubCommits(repo = "SSW-567-HW04", user = "redroach51"):
     commits = commits.json();
     return len(commits);
 
-user_input = input("Input GitHub user: ")
-if (user_input == ""):
-    print("Default user set to creator RedRoach51.")
-    user_input = "RedRoach51";
-repositories = getGithubRepos(user_input)
+def main():
+    user_input = input("Input GitHub user: ")
+    if (user_input == ""):
+        print("Default user set to creator RedRoach51.")
+        user_input = "RedRoach51";
+    repositories = getGithubRepos(user_input)
 
-i = 1;
-count = 0;
+    i = 1;
+    count = 0;
 
-print(user_input + "'s number of repositories: " + str(len(repositories)));
-for repo_name in repositories:
-    commits = getGithubCommits(repo_name, user_input);
-    count = count + commits;
-    print(str(i) + ".) " + repo_name + ", Commits: " + str(commits));
+    print(user_input + "'s number of repositories: " + str(len(repositories)));
+    for repo_name in repositories:
+        commits = getGithubCommits(repo_name, user_input);
+        count = count + commits;
+        print(str(i) + ".) " + repo_name + ", Commits: " + str(commits));
 
-
+if __name__ == '__main__':
+    main()
