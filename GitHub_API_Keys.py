@@ -22,7 +22,7 @@ user_input = input("Input GitHub user: ")
 if (user_input == ""):
     print("Default user set to creator RedRoach51.")
     user_input = "RedRoach51";
-repositories = getGithub(user_input)
+repositories = getGithubRepos(user_input)
 
 i = 1;
 count = 0;
@@ -32,3 +32,5 @@ for repo_name in repositories:
     commits = getGithubCommits(repo_name, user_input);
     count = count + commits;
     print(str(i) + ".) " + repo_name + ", Commits: " + str(commits));
+
+

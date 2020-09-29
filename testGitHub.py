@@ -13,10 +13,10 @@ class testGitHub(unittest.TestCase):
     #  Having that sort of thing seems very disorganized for my personal GitHub though
     #  I'll just have the code check one of the older repositories that likely aren't getting touched.
     #  Check to see if the correct amount of commits was gathered
-    def testGitHubRepos(self):
+    def testGitHubCommits(self):
         name = "SSW-567-HW02"
         user_input = "RedRoach51"
-        commit = GitHub_API_Keys.getGithubCommits();
+        commit = GitHub_API_Keys.getGithubCommits(name,user_input);
         self.assertEqual(commit, 6, "Recorded amount of commits for RedRoach51/SSW-567-HW02 is 6 (As of 9/29/2020)")
 
     #  Admittedly, I'd love to have a test for a print function
