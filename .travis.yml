@@ -3,6 +3,8 @@ python:
  - "3.5"
 install
     - pip install requests
+    - pip install json
+    
 # command to run tests
 script:
  - python -m unittest testGitHub
