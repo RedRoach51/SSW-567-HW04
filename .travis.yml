@@ -1,9 +1,9 @@
 language: python
 python:
  - "3.5"
-install
-    - pip install requests
-    - pip install json
+install:
+ - pip install requests
+ - pip install json
     
 # command to run tests
 script:
