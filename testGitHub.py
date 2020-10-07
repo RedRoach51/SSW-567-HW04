@@ -1,11 +1,18 @@
 import unittest
+import json
+from unittest.mock import patch
+from unittest.mock import MagicMock as Mock
 import GitHub_API_Keys
 class testGitHub(unittest.TestCase):
 
     #  Noticed when I was running the code that the repository list is alphabetically sorted
     #  As of right now, "Agile_Methods_Project" is consistently the first reposistory
     #  Check to see if the correct repository was gathered
-    def testGithubRepos(self):
+    @patch('requests.get')
+    def testGithubRepos(self,injectedMock):
+        injectedMock = Mock()
+        json_str = '[ { "name" : "repo1" }, { "name" : "repo2" } ]'
+
         names = GitHub_API_Keys.getGithubRepos();
         self.assertEqual(names[0], "Agile_Methods_Project", "First listed repository of RedRoach51 is Agile_Methods_Project (As of 9/29/2020)")
 
