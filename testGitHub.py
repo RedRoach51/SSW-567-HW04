@@ -12,7 +12,7 @@ class testGitHub(unittest.TestCase):
     def testGithubRepos(self,injectedMock):
         injectedMock = Mock()
         json_str = '[ { "name" : "repo1" }, { "name" : "repo2" } ]'
-
+        injectedMock.get.json.return_value = json.loads(json_str);
         names = GitHub_API_Keys.getGithubRepos();
         self.assertEqual(names[0], "Agile_Methods_Project", "First listed repository of RedRoach51 is Agile_Methods_Project (As of 9/29/2020)")
 
