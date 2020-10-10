@@ -3,9 +3,9 @@ import json;
 
 def getGithubRepos(user = "redroach51"):
     repos = requests.get("https://api.github.com/users/" + user + "/repos");
-    repos.raise_for_status();
-    data = repos.json()
-    print (data)
+    repos = repos.json()
+    data = repos
+
     x = 0;
     repos = [];
     for entry in data:
